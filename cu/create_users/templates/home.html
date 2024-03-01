@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    {{user_id}}
+    <h1>Welcome to the Home Page</h1>
+    {% if user_data%}
+        <p>You are now logged in or signed up!</p>
+        <p>Place your content here...</p>
+   
+   
+<!-- Display user data -->
+<h2>User Data:</h2>
+<ul>
+    {% for user in user_data %}
+    <li>
+        {% comment %} <strong>User ID:</strong> {{ user_ }}<br> {% endcomment %}
+        <strong>Email:</strong> {{ user.email }}<br>
+        <strong>Name:</strong> {{ user.username }}<br>
+        <!-- Display other user fields as needed -->
+    </li>
+    {% endfor %}
+</ul>
+    <!-- Logout button -->
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    {% endif %}
+</body>
+</html>
